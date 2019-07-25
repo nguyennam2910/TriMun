@@ -1,1 +1,2 @@
 The line graph gives informations in term of share price of three high-tech companies over a three-year period
+if we dont want it
