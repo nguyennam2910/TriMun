@@ -1,0 +1,196 @@
+// Implement Trie
+struct Trie {
+        bool check;
+        Trie* next[26];
+        Trie(): check(false) {
+            for (int i=0; i<26; ++i) next[i] = NULL;
+        }
+    };
+    
+    void insert(Trie* a, string word) {
+        Trie* t = a;
+        for (auto c:word) {
+            if (!t->next[c-'a']) {
+                Trie* b = new Trie();
+                t->next[c-'a'] = b;
+            }
+            t = t->next[c-'a'];
+        }
+        t->check = true;
+    }
+    
+    bool search(Trie* a, string word) {
+        Trie* t = a;
+        for (auto c:word) {
+            if (!t->next[c-'a']) return false;
+            t = t->next[c-'a'];
+        }
+        return t->check;
+    }
+    
+    bool isPre(Trie* a, string word) {
+        Trie* t = a;
+        for (auto c:word) {
+            if (!t->next[c-'a']) return false;
+            t = t->next[c-'a'];
+        }
+        return true;
+    }
+
+
+// Split string
+	vector<string> ret;
+	stringstream ss(p);
+	string tok;
+	while(getline(ss, tok, '*')) {
+		if (tok != "") ret.push_back(tok);
+	}
+
+
+// Binary search
+	while (l < r-1) {
+		int m = (r+l)/2;
+		if (check(a,k,m)) r = m;
+		else l = m;
+	}
+	return r;
+
+	
+// Building from 2 side
+	vector<int> s(n,-1);
+	if (a==1 && b==1 && c==1 && n==1) {
+		cout<<"1";
+		return;
+	}
+	if ( (c+a-c+b-c > n) || ((a==b) && (a==c) && (a == 1))) {
+		cout<<"IMPOSSIBLE";
+		return;
+	}
+	int l = a-c, r= b-c;
+	int temp = n-l;
+	for (int i=0; i<l; ++i) s[i] = temp++;
+	temp = n-r;
+	for (int i=0; i<r; ++i) s[n-1-i] = temp++;
+
+	if (c == 1) {
+		if (l == 0) s[0] = n;
+		else if (r == 0) s[n-1] = n;
+		else s[l] = n;
+	}
+	else {
+		s[l] = n;
+		s[n-1-r] = n;
+		for (int i=0; i<c-2;++i) {
+			s[l+1+i] = n;
+		}
+	}
+	for (int i=0; i<n; ++i) {
+		if (s[i] == -1) s[i] = 1;
+		cout<<s[i]<<" ";
+	}
+
+	
+// Toys
+	bool fncomp (pair<ll,ll> lhs, pair<ll,ll> rhs) {return lhs.second > rhs.second;}
+	void Solve(vector<vector<ll>>& a) {
+		ll sum = 0, need = 0;
+		ll n = a.size();
+		ll ret = 0;
+		for (int i=0; i<n; ++i) sum+=a[i][0];
+		ll cur = sum, maxTime = sum;
+		//auto *fn_pt = fncomp;
+		bool(*fn_pt)(pair<ll,ll>, pair<ll,ll>) = fncomp;
+		multiset<pair<ll,ll>, bool(*)(pair<ll,ll>, pair<ll,ll>)> store(fn_pt);
+		
+		for (int i=0; i<n; ++i) {
+			cur += a[i][0];
+			store.insert({i,a[i][0] + a[i][1]});
+			while (!store.empty()) {
+				pair<ll,ll> temp = *store.begin();
+				if (temp.second <= sum) break;
+				sum -= a[temp.first][0];
+				cur -= 2*a[temp.first][0];
+				store.erase(store.begin());
+				need++;
+			}
+			if (cur > maxTime) {
+				ret = need;
+				maxTime = cur;
+			}
+		}
+		if (!store.empty()) ret = need;
+		cout<<ret<<" ";
+		if (!store.empty()) cout<<"INDEFINITELY";
+		else cout<<maxTime;
+		return;
+	}
+
+// Disjoint-Set structure with path compression by rank
+	struct UnionFind {
+		vector<int> par;
+		vector<int> rank;
+		vector<int> deg; //mark if visit, no need
+	 
+		UnionFind(int n) {
+			par.resize(n);
+			for (int i = 0; i < n; ++i) {
+				par[i] = i;
+			}
+			rank.resize(n,0);
+			deg.resize(n,0);
+		}
+		virtual ~UnionFind() {}
+	 
+		int find(int x) { return (par[x] == x) ? x : par[x] = find(par[x]); }
+	 
+		void merge(int x, int y) {
+			deg[x] += 1;
+			deg[y] += 1;
+	 
+			xset = find(x);
+			yset = find(y);
+			if (xset == yset)   return;
+	 
+			if (rank[xset]>rank[yset]) {
+				par[yset] = xset;
+			} else {
+				par[xset] = yset;
+				if (rank[xset]==rank[yset]) {
+					rank[yset] += 1;
+				}
+			}
+		}
+	 
+		void reset() {
+			for (int i = 0; i < par.size(); ++i) {
+				par[i] = i;
+			}
+			fill(rank.begin(), rank.end(), 0);
+			fill(deg.begin(), deg.end(), 0);
+		}
+	};
+
+//Greedy take all max value
+	int getMax(std::multiset<int>& sets)
+	{
+		int days = 0, sum = 0;
+		auto iter = std::rbegin(sets);
+		while (iter != std::rend(sets) && *iter - days > 0) {
+			sum += *iter - days;
+			iter++, days++;
+		}
+		return sum;
+	}
+	 
+	int main()
+	{
+		int n, a;
+		std::multiset<int> sets;
+		std::cin >> n;
+		for (int i = 0; i < n; i++) {
+			std::cin >> a;
+			sets.insert(a);
+		}
+		std::cout << getMax(sets) << std::endl;
+		return 0;
+	}
