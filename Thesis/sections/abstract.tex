@@ -1,0 +1,33 @@
+%!TEX root = ../main.tex
+
+%\renewcommand{\abstractname}{Kurzfassung}
+\begin{abstract}
+    % \addcontentsline{toc}{chapter}{Abstract}
+    % \chapter*{Abstract}
+
+    Human action recognition (HAR) has many implications in robotic and medical applications.
+    Invariance under different viewpoints is one of the most critical requirements for practical deployment as it affects many aspects of the information captured such as occlusion, posture, color, shading, motion and background.
+    In this thesis, a novel framework that leverages successful deep features for action representation and multi-view analysis to accomplish robust HAR under viewpoint changes.
+    Specifically, various deep learning techniques, from 2D CNNs to 3D CNNs are investigated to capture spatial and temporal characteristics of actions at each individual view.
+    A common feature space is then constructed to keep view invariant features among extracted streams.
+    This is carried out by learning a set of linear transformations that projects separated view features into a common dimension.
+    To this end, Multi-view Discriminant Analysis (MvDA) is adopted.
+    However, the original MvDA suffers from odd situations in which the most class-discrepant common space could not be found because its objective is overly concentrated on scattering classes from the global mean but unaware of distance between specific pairs of classes.
+    Therefore, we introduce a pairwise-covariance maximizing extension of MvDA that takes extra-class discriminance into account, namely pc-MvDA.
+    The novel model also differs in the way that is more favorable for training of high-dimensional multi-view data.
+    Experimental results on three datasets (IXMAS, MuHAVI, MICAGes) show the effectiveness of the proposed method.
+
+
+\end{abstract}
+
+
+% \begin{otherlanguage}{ngerman}
+% %\renewcommand{\abstractname}{Kurzfassung}
+% %\newcommand{\dtabstract}{\hyphenpenalty=10000}
+% %{\dtabstract
+% \begin{abstract}
+% Das Gebiet des Music Information Retrieval befasst sich mit der automatischen Analyse von musikalischen Charakteristika. Ein Aspekt, der bisher kaum erforscht wurde, ist dabei der gesungene Text. Auf der anderen Seite werden in der automatischen Spracherkennung viele Methoden für die automatische Analyse von Sprache entwickelt, jedoch selten für Gesang. Die vorliegende Arbeit untersucht die Anwendung von Methoden aus der Spracherkennung auf Gesang und beschreibt mögliche Anpassungen. Zudem werden Wege zur praktischen Anwendung dieser Ansätze aufgezeigt. Fünf Themen werden dabei betrachtet: Phonemerkennung, Sprachenidentifikation, Schlagwortsuche, Text-zu-Gesangs-Alignment und Suche von Texten anhand von gesungenen Anfragen.\\
+% Das größte Hindernis bei fast allen dieser Themen ist die Erkennung von Phonemen aus Gesangsaufnahmen. Herkömmliche, auf Sprache trainierte Modelle, bieten keine guten Ergebnisse für Gesang. Das Trainieren von Modellen auf Gesang ist schwierig, da kaum annotierte Daten verfügbar sind. Diese Arbeit zeigt zwei Ansätze auf, um solche Daten zu generieren. Für den ersten wurden Sprachaufnahmen künstlich gesangsähnlicher gemacht. Für den zweiten wurden Texte automatisch zu einem vorhandenen Gesangsdatensatz zugeordnet. Die neuen Datensätze wurden zum Trainieren neuer Modelle genutzt, welche deutliche Verbesserungen gegenüber sprachbasierten Modellen bieten.\\
+% Auf diesen verbesserten akustischen Modellen aufbauend wurden Algorithmen aus der Spracherkennung für die verschiedenen Aufgaben angepasst, entweder durch das Verbessern der Robustheit gegenüber Gesangscharakteristika oder durch das Ausnutzen von hilfreichen Besonderheiten von Gesang. Beispiele für die verbesserte Robustheit sind der Einsatz von Keyword-Filler-HMMs für die Schlagwortsuche, ein i-Vector-Ansatz für die Sprachenidentifikation sowie eine Methode für das Alignment und die Textsuche, die stark schwankende Phonemdauern nicht bestraft. Die Besonderheiten von Gesang werden auf verschiedene Weisen genutzt: So z.B. in einem Ansatz für die Sprachenidentifikation, der lange Aufnahmen benötigt; in einer Methode für die Schlagwortsuche, die bekannte Phonemdauern in Gesang mit einbezieht; und in einem Algorithmus für das Alignment und die Textsuche, der bekannte Phonemkonfusionen verwertet.
+% \end{abstract}
+% \end{otherlanguage}

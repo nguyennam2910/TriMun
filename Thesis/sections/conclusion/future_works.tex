@@ -1,0 +1,17 @@
+%!TEX root = ../../main.tex
+
+\section{Future Works} \label{sec:future_works}
+
+    % In the future, we will test our framework for HAR from unknown-viewpoint (testing view is not taken in training phase for building common space).
+    % In addition, to deal with continuous video streams, we will apply a fast gesture detection by a lightweight classifier and only activate the HAR once a gesture candidate is present.
+    % We will also deploy other modality such as optical flow or depth to make our framework more robust.
+
+    To sum up, it is feasible to further explore different directions and improvements for the proposed work in this thesis to be more practically deployable:
+    \begin{itemize}
+        \item The framework is built and tested on fine-cut video datasets with the assumption of activation of a gesture detection module beforehand. To deal with real life continous video streams, a fast lightweight gesture detector must be applied and only activate the HAR once a gesture candidate is present. Another practical approach commonly used in the literature is to use continual multi-clip sampling instead of gesture detection combined with 16-frame sampling.
+        \item As multi-view analysis algorithms inherently allows each view to have different dimensions, other modalities such as optical flow or depth can be included and interpreted as new views so as to increase the robustness of overall framework.
+        \item Test the framework with newer backbone CNN architectures, for example I3D \cite{joao2017quo}, P3D \cite{qiu2017learning}, ResNeXt 3D \cite{hara2018can}, R(2+1)D \cite{du2018a}, CSN \cite{du2019video}.
+        \item Evaluate on a larger and more challenging benchmark dataset, such as the multi-modal NTU dataset \cite{shahroudy2016ntu} which contains 120 action classes and more than 114,480 video samples in total.
+        \item More research can be done to make the framework end-to-end trainable and eliminate the need of a final classifier. One potential approach is to make means of classes learnable, and optimize them simultaneously with the backbone networks as in \cite{wen2016a}.
+        \item Since all the current multi-view analysis algorithms are limited to samples from learnt views and viewpoint information must be a known priori, further research is needed to make the framework capable of recognizing a novel viewpoint.
+    \end{itemize}

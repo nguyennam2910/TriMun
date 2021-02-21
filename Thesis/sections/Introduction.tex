@@ -1,0 +1,58 @@
+% !TEX root = ../main.tex
+
+\chapter{Introduction} \label{chap:introduction}
+    \section{Motivation} \label{sec:intro_motivation}
+        Human action and gesture recognition aims at recognizing an action from a given video clip. This is an attractive research topic, which has been extensively studied over the years due to its broad range of applications from video surveillance to human machine interaction \cite{herath2017going, zhang2019comprehensive}.
+        %While action and gesture recognition in constrained simple backgrounds scene taken from common views seems to be a well solved problem, recognizing actions from real-world complex scenes has to face new challenges.
+        Within this scope, a very important demand is independence to viewpoint. However, different viewpoints result in various human pose, background, camera motions, lighting conditions and occlusions. Consequently, recognition performance could be dramatically degraded under viewpoint changes.
+
+        To overcome this problem, a number of methods have been proposed. View independence recognition such as \cite{gavrila19963, lv2007single, weinland2007action, weinland2011survey} generally require a careful multi-view camera setting for robust joint estimation. View invariance approach \cite{junejo2008cross, li2012cross} is usually limited by inherent structure of view-invariant features. Recently, knowledge transfer technique is widely deployed for cross-view action recognition, for instance bipartite graph that bridge the semantic gap across view dependent vocabularies \cite{liu2011cross}, AND-OR graph (MST-AOG) for cross-view action recognition \cite{wang2014cross}. To increase discriminant and informative features, view private features and shared features are both incorporated in such frameworks to learn the common latent space \cite{kong2017deeply, liu2018hierarchically}. 
+        While existing works for human action and gesture recognition from common viewpoints explored different deep learning techniques and achieved impressive accuracy. In most of aforementioned multi-view action recognition techniques, the features extracted from each view are usually hand-crafted features (i.e improved dense trajectories) \cite{rahmani2017learning, liu2018hierarchically,kong2017deeply}. Deep learning techniques, if used, handle knowledge transfer among viewpoints. Deployment of deep features in such frameworks for cross-view scenario is under active investigation.
+        %To overcome this problem, a number of methods have been proposed. View independence recognition has been surveyed in \cite{weinland2011survey}. View normalization 2D/3D attempts to estimate view transformation between model and observation \cite{gavrila19963, lv2007single, weinland2007action}. These approaches generally require a careful multi-view camera setting for robust joint estimation. View invariance approach searched for features and matching functions that are independent with view changes \cite{junejo2008cross, li2012cross}. The performance of this approach is limited by inherent structure of view-invariant features. Recently, knowledge transfer technique is widely deployed for cross-view action recognition. Liu et al. utilized a bipartite graph to build bilingual words that bridge the semantic gap across view dependent vocabularies \cite{liu2011cross}. Wang et al. introduced a multi-view spatio-temporal AND-OR graph (MSTAOG) representation for cross-view action recognition \cite{wang2014cross}. Zhang et al. built continuous virtual path which connects the source view and the target view \cite{zhang2013cross}. To increase discriminant and informative features, view private features and shared features are both incorporated in such frameworks to learn the common latent space \cite{kong2017deeply, liu2018hierarchically}. While existing works for human action and gesture recognition from common viewpoints explored different deep learning techniques and achieved impressive accuracy. In most of aforementioned multi-view action recognition techniques, the features extracted from each view are usually hand-crafted features (i.e improved dense trajectories) \cite{rahmani2017learning, liu2018hierarchically,kong2017deeply}. Deep learning techniques, if used, handle knowledge transfer among viewpoints. Deployment of deep features in such frameworks for cross-view scenario is under investigated. 
+
+        In parallel with knowledge transfer techniques, building a common space from different views has been addressed in many other works using multi-view discriminant analysis techniques.
+        The first work of this approach was initiated by Canonical Component Analysis (CCA) that tried to find two linear transformations for each view \cite{thompson1984canonical}.
+        Various improvements of CCA have been made to take non-linear transformation into account (kernel CCA) \cite{hardoon2004canonical}.
+        %Then, GMA has improved MCCA to preserve supervised structure of each view \cite{yang2014multi, cao2017generalized}. 
+        Henceforth, different improvements have been introduced such as MULDA \cite{yang2014multi}, MvDA \cite{kan2015multi}, MvCCA, MvPLS and MvMDA \cite{cao2017generalized}, MvCCDA \cite{you2019multi}.
+        All of these techniques try to build a common space from different views by maximizing the cross-covariance between views. %between-classes while minimizing within-classes distances among views.
+        However, most of these works are still experimented with static images, none of them have been explored with videos.
+        Particularly, their investigation for the case of human action recognition is still actively under taken.
+
+    \section{Objective} \label{sec:intro_objective}
+        %we attempt to address two main questions: Is it suitable to deploy a view analysis discriminant techniques for cross-view human action recognition; which kind of deep features could be the best in such framework? 
+        Motivated by the two aforementioned under investigation problems, in the research project at MICA institute, an unified framework is proposed for cross-view action recognition which consists of two main components: individual view feature extraction and latent common space construction. The work in this thesis is part of the work carried out by the research team.
+
+        For feature extraction from individual view, a range of deep neural networks are investigated, from 2D CNNs with different pooling strategies (average pooling, temporal attention pooling or using LSTM) to 3D CNNs with two most recent variations (C3D \cite{tran2015learning} and ResNet-50 3D \cite{hara2018can}).
+        These networks have been successfully deployed for human action and gesture recognition in general, but not investigated yet for cross-view recognition scenarios.
+
+        The objective of this thesis focuses on the second stage of the proposed general framework.
+        For building a latent common space, we are inspired by idea of multi-view discriminant analysis (MvDA).
+        This technique has been shown to be efficient for images based tasks, but not deployed for video based tasks and mostly with deep features extracted from videos as input.
+        In addition, the MvDA's objective has no explicit constraint to push class centers away from each other.
+        To this end, with idea based on the proposal of a dimensionality reduction algorithm namely pc-LDA, we extend the original MvDA by introducing the pairwise-covariance constraint that helps to make classes to be more separated, while modifying the optimization model that could theoretically directed to train the whole framework end-to-end.
+        % This helps to make classes to be more separated in the common feature space than using the baseline MvDA.
+        The new optimization objective is also more efficient than the original conception of pc-LDA in terms of computational complexity.
+
+        The main contributions of this thesis are summarized as follows: 
+        \begin{itemize}
+            \item Firstly, investigating various recent deep neural networks for feature extraction.
+            \item Secondly, proposing an extension of MvDA (so-called pc-MvDA) which aims to improve the recognition results.
+            \item Finally, incorporating DNN and MvA in an unified framework and evaluating it on three datasets (IXMAS, MuHAVi, MICAGes).
+            % \item Firstly, we improve the MvDA technique by incorporating pairwise-covariance of between-classes that helps to separate classes, resulting in improved performance. The proposed method is called pc-MvDA. When either number of views or dimensionality of input data is large, the optimization problem is harder to be solved, we also propose a modification to the objective of pc-MvDA that facilitates the optimization problem.
+            % \item Secondly, various recent neuronal networks for feature extraction are investigated and incorporated in an unified framework with multi-view analysis algorithms for robust cross-view action and gesture recognition.
+            % \item Finally, we evaluate the proposed framework on three datasets (IXMAS, MuHAVi and MICAGes). The experimental results show improvement of the proposed method compared to state of the art techniques.
+            % \item Secondly, we incorporate various investigated neuronal networks and multi-view analysis techniques in an unified framework. Then, we evaluate the framework on three datasets (IXMAS, MuHAVi and MICAGes) and compare them to state of the art approaches. The experimental results show that the proposed pc-MvDA supersede baseline MvDA.
+        \end{itemize}
+
+        Specifically, where the thesis is based on work done by myself jointly with others, my own contribution focuses on second and third objectives as primary contributor while training process of DNN for feature extraction is largely done with help of co-researcher.
+
+    \section{Thesis Outline} \label{sec:intro_outline}
+        The thesis is structured into 5 chapters:
+        \begin{description}
+            \item[1 Introduction] This chapter. Motivates the work and describes the research goals.
+            \item[2 Background and Related Works] Describes the deep learning based approach for feature extraction, dimensionality reduction and multi-view learning algorithms. Also briefly reviews the existing approaches on human action recognition in single and cross-view scenarios and multi-view analysis techniques.
+            \item[3 Proposed Method] Introduces the general architecture and proposes the technical contribution for solving the mentioned research objective.
+            \item[4 Experiments] Reports information regarding experiments: datasets, evaluation protocol, technical setup, results and discussions.
+            \item[5 Conclusion] Summarizes the work, points out the contributions, drawbacks and suggests future research directions.
+        \end{description}

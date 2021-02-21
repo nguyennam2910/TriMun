@@ -1,0 +1,27 @@
+%!TEX root = ../../../main.tex
+
+\subsection{Brief summary of Multi-view Discriminant Analysis}
+    In this thesis, we proposed an improvement to MvDA.
+    The experimental results are also compared to the performance of MvDA and its first variant namely MvDA-vc, both proposed by the same authors in \cite{kan2015multi} and \cite{kan2016multi}.
+    Let us revisit the brief summary of the baseline MvDA before introducing the formulation of the proposed algorithm.
+    % \paragraph{Multi-view discriminant analysis (MvDA)}
+    The between-class scatter matrix $\boldsymbol{S}_B^y$ and minimize the within-class scatter matrix $\boldsymbol{S}_W^y$ are defined as: 
+
+    \begin{align}
+        \boldsymbol{S}_W^y &= \sum_{i=1}^{c}\sum_{j=1}^{v}\sum_{k=1}^{n_{ij}}(y_{ijk}-\mu_i)(y_{ijk}-\mu_i)^T \\
+        \boldsymbol{S}_B^y &= \sum_{i=1}^{c}n_i(\mu_i - \mu)(\mu_i - \mu)^T
+    \end{align}
+
+    Then the objective function is formulated by a Rayleigh quotient:
+
+    \begin{equation}
+        (\boldsymbol{\omega}_1^*,\boldsymbol{\omega}_2^*, ..., \boldsymbol{\omega}_v^*) = \operatorname*{argmax}_{\boldsymbol{\omega}_1, \boldsymbol{\omega}_2,..., \boldsymbol{\omega}_v}\frac{trace(\boldsymbol{S}_B^y)}{trace(\boldsymbol{S}_W^y)}
+    \end{equation}
+
+    % \paragraph{Multi-view discriminant analysis with view consistency (MvDA-vc)}
+    %     In MvDA-vc, a {\itshape view consistency} term $\sum_{j,r=1}^{v}||\boldsymbol{\beta_j} - \boldsymbol{\beta_r}||_2^2$ is added to the minimization. The objective function becomes:
+
+    %     \begin{equation}
+    %         (\boldsymbol{\omega}_1^*,\boldsymbol{\omega}_2^*, ..., \boldsymbol{\omega}_v^*) = \operatorname*{argmax}_{\boldsymbol{\omega}_1, \boldsymbol{\omega}_2,..., \boldsymbol{\omega}_v}\frac{trace({S}_B^y)}{trace({S}_W^y) + \alpha\sum_{j,r=1}^{v}||\boldsymbol{\beta_j} - \boldsymbol{\beta_r}||_2^2} 
+    %         \label{eq:MvDA-vc}
+    %     \end{equation}

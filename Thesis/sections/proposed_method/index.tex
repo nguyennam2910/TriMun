@@ -1,0 +1,19 @@
+%!TEX root = ../../main.tex
+
+\chapter{Proposed Method} \label{chap:method}
+    \section{Introduction}
+        This chapter represents the methodology proposed in this thesis.
+        Section \ref{sec:general_framework} gives an overview of the multi-view human action and gesture recognition framework.
+        Section \ref{sec:feature_extraction} provides the details on different CNN architectures used in feature extraction for individual view.
+        Section \ref{sec:common_feature_space} describes the proposed improvement of MvDA for building common feature space across multiple views, which is the main contribution of this thesis.
+
+    \input{sections/proposed_method/general_framework}
+    \input{sections/proposed_method/feature_extractions/index}
+    \input{sections/proposed_method/construction_feature_space/index}
+
+    \section{Summary}
+        The novel human action and gesture recognition framework was introduced in this chapter, which consists of two components.
+        Firstly, convolutional based clip-level extraction using either 2D CNN (i.e. ResNet) combined with temporal modeling techniques (AP, RNN, TA) or 3D CNN (i.e. C3D, ResNet 3D) are trained separately for each view.
+        In the later stage, multi-view analysis algorithms (including pc-MvDA - the main contribution of this thesis) are employed to project common features space, in which the final classification process take place.
+        The new formulation of pc-MvDA successfully enforces class separability by adding pairwise distance constraint and casting the final objective to an efficient gradient descent optimization problem that can theoretically be backpropagated to previous layers of CNN feature extractors.
+        However, the framework is currently not easily end-to-end trainable due to enormous size of multiple deep feature extractors coupled with the problematic prerequisite of knowing class means when using multi-view analysis as loss function.

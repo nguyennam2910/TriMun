@@ -1,0 +1,204 @@
+\documentclass[
+    twoside,         % oneside/twoside : Einseitiger oder zweiseitiger Druck?
+    12pt,            % Bezug: 12-Punkt Schriftgre
+    DIV15,           % Randaufteilung, siehe Dokumentation "KOMA"-Script
+    BCOR17mm,        % Bindekorrektur: Innen 17mm Platz lassen. Copyshop-getestet.
+    headsepline,     % Unter Kopfzeile Trennlinie (aus: headnosepline)
+    footsepline,     % ber Fuzeile Trennlinie (aus: footnosepline)
+    openright,       % Neue Kapitel im zweiseitigen Druck rechts beginnen lassen
+    a4paper,         % Seitenformat A4
+    abstracton,      % Abstract einbinden
+    english,
+    listof=totoc,version=first,      % Div. Verzeichnisse ins Inhaltsverzeichnis aufnehmen
+    bibliography=totoc,version=first,        % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
+    titlepage,       % Titelseite aktivieren
+    headinclude,     % Seiten-Head in die Satzspiegelberechnung mit einbeziehen
+    footexclude,     % Seiten-Foot nicht in die Satzspiegelberechnung mit einbeziehen
+    numbers=noenddot,version=first % Gliederungsnummern ohne abschlieenden Punkt darstellen
+] {scrreprt}       % Dokumentenstil: "Report" aus dem KOMA-Skript-Paket
+
+\usepackage[active]{srcltx}
+%\usepackage[activate=normal]{pdfcprot\documentclass[options]{class}} % Optischer Randausgleich -> pdflatex!
+\usepackage{ifthen}
+\usepackage[english,vietnamese]{babel}
+%\usepackage[fixlanguage]{babelbib}
+%\setbiblanguage{english}
+\usepackage[utf8]{inputenc}
+% \usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+\usepackage[T1]{url}
+\usepackage{ae}
+\usepackage[final]{graphicx}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{floatflt} 
+\usepackage{rotating} 
+\usepackage{wrapfig}
+%\usepackage{subfig}
+\usepackage{graphicx}
+%\usepackage[first,light]{draftcopy} % Fr Probedruck
+\usepackage{lineno}
+\usepackage[plainpages=false,pdfpagelabels,hypertexnames=false]{hyperref}
+\usepackage{pdfpages} %include pdf files
+\usepackage{listings} %include sourcecode
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{nomencl}
+\usepackage{xcolor}
+\usepackage{xfrac}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{subcaption}
+%\usepackage{paralist}
+\usepackage{tipa}
+\usepackage{csquotes}
+%\usepackage{textcomp}  %mit \textcent geht Cent-Symbol
+\usepackage{diagbox}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    % total={170mm,257mm},
+    left=35mm,
+    right=25mm,
+    top=20mm,
+    bottom=25mm,
+}
+
+
+% Tiefe der Kapitelnummerierung beeinflussen
+\setcounter{secnumdepth}{3} % Tiefe der Nummerierung
+\setcounter{tocdepth}{3}    % Tiefe des Inhaltsverzeichnisses
+
+% Hier in die zweite geschweifte Klammer jeweils
+% die persnlichen Daten eintragen:
+\newcommand{\typeofelaboration}{Master Thesis}
+\newcommand{\nameofauthor}{Tran Hoang Nhat}
+\newcommand{\emailofauthor}{hnhat.tran@gmail.com}
+\newcommand{\idofauthor}{CBC19005}
+\newcommand{\majorofauthor}{Control Engineering and Automation}
+
+\newcommand*\en{\fontencoding{T1}\selectfont\selectlanguage{english}}
+\newcommand*\vn{\fontencoding{T5}\selectfont\selectlanguage{vietnamese}}
+\makeatletter
+\newcommand{\capitalize}[1]{%
+    \edef\@tempa{\expandafter\@gobble\string#1}%
+    \edef\@tempb{\expandafter\@car\@tempa\@nil}%
+    \edef\@tempa{\expandafter\@cdr\@tempa\@nil}%
+    \uppercase\expandafter{\expandafter\def\expandafter\@tempb\expandafter{\@tempb}}%
+    \@namedef{\@tempb\@tempa}{\expandafter\MakeUppercase\expandafter{#1}}
+}
+\makeatother
+
+\newcommand{\markup}[1]{\textbf{#1}}
+\newcommand{\github}[1]{\href{#1}{\faGithubSquare\ \textit{#1}}}
+
+% Seitenlayout festlegen. Hier nichts ndern!
+\pagestyle{scrplain}
+\ihead[]{\scriptsize \headmark}
+\ohead[]{\scriptsize \typeofelaboration}
+\chead[]{}
+\ifoot[]{\scriptsize \nameofauthor\ - \idofauthor}
+\ofoot[]{\pagemark}
+\cfoot[]{}
+\newcommand{\resethead}{\newpage%
+    \ihead[]{\scriptsize \headmark}%
+    \ohead[]{\scriptsize \typeofelaboration}%
+    \chead[]{}%
+}
+\newcommand{\resetfoot}{\newpage%
+    \ifoot[]{\scriptsize \nameofauthor\ - \idofauthor}%
+    \ofoot[]{\pagemark}%
+    \cfoot[]{}%
+}
+\renewcommand{\titlepagestyle}{scrheadings}
+\renewcommand{\partpagestyle}{scrheadings}
+\renewcommand{\chapterpagestyle}{scrheadings}
+\renewcommand{\indexpagestyle}{scrheadings}
+
+% Abschnittsweise Nummerierung anstatt fortlaufend. Hier nichts ndern!
+\makeatletter
+\@addtoreset{equation}{chapter}
+\@addtoreset{figure}{chapter}
+\@addtoreset{table}{chapter}
+\renewcommand\theequation{\thechapter.\@arabic\c@equation}
+\renewcommand\thefigure{\thechapter.\@arabic\c@figure}
+\renewcommand\thetable{\thechapter.\@arabic\c@table}\makeatother
+
+
+% Quelltextrahmen, klein. Hier nichts ndern!
+\newsavebox{\inhaltkl}
+\def\rahmenkl{\sbox{\inhaltkl}\bgroup\small\renewcommand{\baselinestretch}{1}\vbox\bgroup\hsize\textwidth}
+\def\endrahmenkl{\par\vskip-\lastskip\egroup\egroup\fboxsep3mm%
+\framebox[\textwidth][l]{\usebox{\inhaltkl}}}
+
+% Quelltextrahmen, normale Groesse. Hier nichts ndern!
+\newsavebox{\inhalt}
+\def\rahmen{\sbox{\inhalt}\bgroup\renewcommand{\baselinestretch}{1}\vbox\bgroup\hsize\textwidth}
+\def\endrahmen{\par\vskip-\lastskip\egroup\egroup\fboxsep3mm%
+\framebox[\textwidth][l]{\usebox{\inhalt}}}
+
+
+% Sonstige Befehlsdefinitionen hier ablegen.
+\newcommand{\entspricht}{\stackrel{\wedge}{=}}
+\definecolor{light-gray}{gray}{0.95}
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
+%\makenomenclature
+\makeglossary
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+\newcommand{\listofabbreviations}{\input{sections/list_of_abbreviations}}
+\bibliographystyle{IEEEbib}
+
+\begin{document}
+
+    \onehalfspacing
+    \clubpenalty=10000
+    \widowpenalty=10000
+    \selectlanguage{english}
+    \input{sections/title.tex}
+
+    \cleardoublepage
+    \footnotesize
+    \pagenumbering{roman}
+    \pagestyle{scrheadings}
+
+    \normalsize
+    \input{sections/abstract.tex}
+    \input{sections/acknowledgements.tex}
+
+    \footnotesize
+    \tableofcontents
+    \normalsize
+
+    \cleardoublepage
+    \pagenumbering{arabic}
+    \listoffigures
+    \listoftables
+    \listofabbreviations
+
+    \cleardoublepage
+    \input{sections/introduction}
+    \input{sections/technical_background_and_related_works/index}
+    \input{sections/proposed_method/index}
+    \input{sections/experiments/index}
+    \input{sections/conclusion/index}
+    \input{sections/appendix}
+
+    \cleardoublepage
+    \footnotesize
+    \ihead[]{Bibliography}
+    \bibliography{main}
+    \normalsize
+
+\end{document}

@@ -1,0 +1,60 @@
+%!TEX root = ../../main.tex
+
+\section{Related Works} \label{sec:related_works}
+
+    \subsection{Human action and gesture recognition}
+        Action recognition has been an attractive research topic since the last decade \cite{zhang2019comprehensive}.
+        Early methods represented human actions by extracting 2D/3D key-points such as Harris-3D, SIFT-3D, HOG-3DHOF \cite{laptev2008learning}, ESURF \cite{willems2008efficient} then computed a descriptor from the detected key-points.
+        Action representation  by a set of key-points could loose the temporal information. Therefore, Wang and Schmid in \cite{wang2013action} proposed a feature named improved dense trajectories (iDT) that densely sample and track optical flow points along trajectories.
+        iDT has become state-of-the-art hand-crafted features and widely used for many video-based tasks.
+        However, when working with large-scale datasets, iDT becomes intractable on due to its expensive computational cost and poor performance. 
+
+        To work with more challenging datasets, effective action recognition approaches rely on powerful learning methods, particularly the deep learning techniques.
+        Early works applied 2D CNN on frames of video sequence and then aggregated the information using pooling techniques \cite{karpathy2014large}.
+        To exploit the temporal information, different architectures such as LSTM with the internal mechanisms called gates that can deal with short-term memory are proposed \cite{sun2017lattice}.
+        Recently, instead of using 2D convolutional operators, different 3D CNN have been proposed \cite{ji20123d, tran2015learning, varol2017long}.
+        Besides, to boost the recognition performance, different approaches tried to combine multiple streams \cite{wang2015towards, feichtenhofer2016convolutional, khong2018improving} or to combine both multiple features \cite{wang2015action, christoph2016spatiotemporal}. %trajectory-pooled deep-convolutional
+        %descriptor - TDD;  ST-ResNet+iDT
+        %Recently, many other architectures such as temporal Segment Networks - TSN \cite{wang2016temporal}, ST-VLMPF \cite{duta2017spatio}, P3D ResNet \cite{qiu2017learning}, I3D\cite{carreira2017quo}, 3D ResNeXt \cite{hara2018can}, R(2+1) D-TwoStream \cite{tran2018closer}, CO2FI+ASYN \cite{lin2018action}, and DML \cite{chen2017deep} have shown state-of-the-art performances in action recognition.
+        %Previous section briefly gives a survey of different techniques for features extraction and action recognition from common views.
+
+        These aforementioned approaches focus on single view action recognition, cross-view action recognition is more challenging and requires additional techniques to be taken into account. 
+        Junejo et al. in \cite{junejo2008cross} proposed a descriptor, namely self-similarity matrix (SSM), which is an exhaustive table of distances between image features taken by pair from the image sequences.
+        Liu et al. \cite{liu2011cross} employed cuboids extracted from each video and BoW model to build video descriptor for each single view. Then, a bipartite graph is built to model two view-dependent vocabularies.
+        Li et al. \cite{li2012discriminative} described each video by concatenating spatio-temporal interest-point-based descriptor with shape flow descriptor. Then, to deal with cross-view, they construct ‘virtual views’, each is a linear transformation between action descriptors from one viewpoint and those from another.
+        The method in \cite{zheng2012cross, zheng2013learning} employed the same video representation manner as in \cite{li2012discriminative}.
+        However, a transferable dictionary between source and target view has been learnt to force features of the same action extracted from two views having the same sparse representation. 
+        %In \cite{ulhaq2017space}, the authors proposed an advanced space-time filtering framework for recognizing human actions despite large viewpoint variations. Specifically, they used 3D tensor structure at each pixel, which characterizes the most common local motion in action sequences. Discrete tensor Fourier transform is then applied to achieve frequency domain representations. Then, they form view clusters from multiple-view action data and use space-time correlation filtering to achieve robust view representations. 
+
+        Previous cross-view action recognition techniques usually connect source and target views with a set of linear transformations, that are unable to capture the non-linear manifolds on which real actions lie. In \cite{rahmani2017learning}, the authors find a shared high-level non-linear virtual path that connects multiple source and target views to the same canonical view. This virtual path is learnt by a deep neural network. In \cite{kong2017deeply}, a deep learning technique that stacks multiple layers of feature learners is designed to incorporate both private and shared view features. 
+        In \cite{liu2018hierarchically}, the authors concatenated both private and shared view features and learnt transferable dictionary pair from a pair of views. In \cite{zhang2018action}, the authors proposed a framework to jointly learn a a view-invariant transfer dictionary and a view-invariant classifier using synthetic data during the pre-training phase to extract view-invariance between 3D and 2D videos.
+
+        %As we have analyzed, multi-view  analysis has been actively studied. Several innovative ideas have been proposed. As a result, performance of multi-view classification is significantly improved. However, most of these methods are experimented on still images. The question of how still good those methods a special time-series data (i.e. video data) has been not addressed. In this paper, we contribute to improve the model of common feature space. In addition, we will evaluate the proposed method on video data, where both temporal and spatial features must be taken into account.
+
+    \subsection{Multi-view analysis and learning techniques}
+        As many objects in the real-world can be observed from different viewpoints, to exploit the consensual and complementary information between different views, Multi-view analysis (MvA) techniques are employed.
+        MvA is a strategy for fusing data from different sources or subsets.
+
+        Canonical Correlation Analysis (CCA) \cite{Hotelling} can be considered as the first approach of MvL with the aim to find pairs of projections for two views so that the correlations between these views are maximized.
+        As CCA can only handle the linear correlation, Kernel CCA (KCCA) was proposed to take non-linear correlation relationship of data into account \cite{Akaho2006}.
+        However, both CCA and KCCA are unsupervised methods and can not leverage the label information.
+        In \cite{diethe2008multiview}, a supervised approach named Multi-view Fisher discriminant analysis (MvFDA) was proposed for binary classification problem.
+        All of aforementioned methods are only applicable for two views problem.
+
+        To extend to multiple view cases, a natural extension is to maximize the sum of the pairwise correlations.
+        In a general case, it would be better to build a common shared feature space that captures latent information of the object from all observed views.
+        For this propose, Multi-view CCA (MvCCA) is proposed in 2010 to build a common feature space of all views \cite{rupnik2010multi}. 
+        %MCCA tried to find $v$ transformations by maximizing the correlation of every two views. 
+        However, MvCCA did not consider the discrepancy information but only maximizing the correlation between every two views, so that it may be ineffective for classification across views. 
+        %Generalized Multi-view Analysis (GMA) preserves the supervised structure of each view while keeping the projections of different views close to each other in the latent common space. GMA is considered as an extension of Fisher Discriminant analysis (FDA) for cross-view problem. It considers class label information so it could be good for multi-view classification. However, GMA considers only the the discriminant information in each individual view, not inter-view so it could decrease cross-view recognition.
+        %Multi-view Uncorrelated Linear Discriminant Analysis (MULDA) \cite{sun2015multi-view} learnt uncorrelated discriminant features by using Uncorrelated Linear Discriminant Analysis (ULDA). Multi-view Modular Discriminant Analysis (MvMDA) \cite{cao2017generalized} was proposed to separate class centers across different views. 
+
+        In \cite{kan2015multi}, Multi-view discriminant analysis (MvDA), an extension of linear discriminant analysis (LDA) for multi-view problem was proposed.
+        MvDA tries to optimize jointly view correlation, intra-view and inter-view discriminability. 
+        An extension of MvDA which considers view-consistency was also introduced and achieved significant performance improvement.
+
+        In \cite{zhao2018multi}, the authors proposed multi-view manifold learning with locality alignment (MvML-LA) framework to realize manifold learning under multi-view scenario. 
+        %Locality alignment in the latent space learning is considered to enhance its discriminative capability and developed two specific algorithms in supervised and unsupervised scenarios, respectively. 
+
+        Most recently, \cite{you2019multi} proposed Multi-view Common Component Discriminant Analysis (MvCCDA) technique that both integrates supervised information and local geometric information into the common component extraction process.
+        This helps to effectively handle view discrepancy, discriminability and non-linearity in a joint manner.

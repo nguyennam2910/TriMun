@@ -1,0 +1,25 @@
+%!TEX root = ../../main.tex
+
+\section{Experimental Setup} \label{sec:experimental_setup}
+    \subsection{Programming Environment and Libraries}
+        The majority of the code implementation is written in Python, fueled by PyTorch \cite{NEURIPS2019_9015} deep learning framework.
+        The framework offers powerful supports for matrix manipulation, automatic diffirentiation, accelerated training of deep neural networks on parallel computing platforms and flexibility to efficiently research new algorithmic approaches.
+        The MvDA and MvDA-vc Matlab implementations are inherited from the repository published by \cite{kan2015multi} with slight modifications.
+        The implementation of proposed pc-MvDA is published at \github{https://github.com/inspiros/pcmvda}.
+
+    \subsection{Configurations}
+        \paragraph{Feature extractors}
+        All models are trained for 60 epoches with SGD optimizer, initial learning rate is 0.0003 and momentum is 0.9.
+        The choosen pre-trained models are:
+        \begin{itemize}
+            \item{ResNet-50} model was pre-trained on ImageNet dataset and is available in subpackage \textit{torchvision.models} of PyTorch.
+            \item{C3D} model was pre-trained on Sports-1M \cite{karpathy2014large} then fine-tuned on Kinetics dataset \cite{kay2017kinetics}. The model is implemented by \cite{VMZ} in Caffe2 deep learning framework, which was improved from original model presented in \cite{tran2015learning} by inserting Batch Normalization layers after each Convolution layer.
+            \item{ResNet-50 3D} was pre-trained on Kinetics dataset and weights are given by \cite{hara2018can}.
+        \end{itemize}
+
+        \paragraph{Multi-view analysis algorithms}
+        Output dimensions of both algorithms are 200. MvDA has no alterable parameter and $\lambda$ of view-consistency term in MvDA-vc is set to 0.03.
+        For pc-MvDA, the hyperparameters are $\beta = 1$ and $q = 1$ and the optimizer utilized is Adam with initial learning rate set to 0.01, on each experiment trained 300 epochs.
+
+        \paragraph{Classifier}
+        For comparison with related methods, the final classifier used is kNN with $k = 1$.
