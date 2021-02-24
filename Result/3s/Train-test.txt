@@ -1,2 +1,2 @@
-Number of train samples:  2400
+Number of train samples:  1920
 Number of test samples:  160
