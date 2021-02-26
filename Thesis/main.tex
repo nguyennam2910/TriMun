@@ -25,7 +25,7 @@
 %\setbiblanguage{english}
 \usepackage[utf8]{inputenc}
 % \usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[T5,T1]{fontenc}
 \usepackage{fontawesome5}
 \usepackage[T1]{url}
 \usepackage{ae}
@@ -82,9 +82,9 @@
 % Hier in die zweite geschweifte Klammer jeweils
 % die persnlichen Daten eintragen:
 \newcommand{\typeofelaboration}{Master Thesis}
-\newcommand{\nameofauthor}{Tran Hoang Nhat}
+\newcommand{\nameofauthor}{Nguyễn Tiến Nam}
 \newcommand{\emailofauthor}{hnhat.tran@gmail.com}
-\newcommand{\idofauthor}{CBC19005}
+\newcommand{\idofauthor}{}
 \newcommand{\majorofauthor}{Control Engineering and Automation}
 
 \newcommand*\en{\fontencoding{T1}\selectfont\selectlanguage{english}}
@@ -107,7 +107,8 @@
 \ihead[]{\scriptsize \headmark}
 \ohead[]{\scriptsize \typeofelaboration}
 \chead[]{}
-\ifoot[]{\scriptsize \nameofauthor\ - \idofauthor}
+% \ifoot[]{\scriptsize \nameofauthor\ - \idofauthor}
+\ifoot[]{\scriptsize \nameofauthor}
 \ofoot[]{\pagemark}
 \cfoot[]{}
 \newcommand{\resethead}{\newpage%
@@ -165,7 +166,7 @@
     \onehalfspacing
     \clubpenalty=10000
     \widowpenalty=10000
-    \selectlanguage{english}
+    \vn
     \input{sections/title.tex}
 
     \cleardoublepage
