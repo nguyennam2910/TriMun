@@ -55,6 +55,14 @@ struct Trie {
 	}
 	return r;
 
+// Min, maxheap
+struct classcomp {
+  bool operator() (const int& lhs, const int& rhs) const
+  {return lhs>rhs;}
+};
+
+set<int, classcomp> maxheap;
+set<int> minheap;
 	
 // Building from 2 side
 	vector<int> s(n,-1);
