@@ -15072,6 +15072,744 @@
 						"$ref": "AAAAAAF3Z4eUYTenFsQ="
 					},
 					"name": "Print metapool",
+					"ownedElements": [
+						{
+							"_type": "FCFlowchart",
+							"_id": "AAAAAAF4uoisxYvVY6k=",
+							"_parent": {
+								"$ref": "AAAAAAF3Z4eUYTeoybI="
+							},
+							"name": "Flowchart1",
+							"ownedElements": [
+								{
+									"_type": "FCFlowchartDiagram",
+									"_id": "AAAAAAF4uoisxYvWqko=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "FlowchartDiagram1",
+									"ownedViews": [
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uojMJIvcEnA=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uojMJIvaCcY="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uojMJIvdKFE=",
+													"_parent": {
+														"$ref": "AAAAAAF4uojMJIvcEnA="
+													},
+													"font": "Arial;13;0",
+													"left": 289,
+													"top": 42,
+													"width": 141,
+													"height": 26,
+													"text": "Huấn luyện mô hình với toàn bộ các đặc trưng",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 279,
+											"top": 32,
+											"width": 161,
+											"height": 49,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uojMJIvdKFE="
+											}
+										},
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uol4bYvqY/I=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uol4bIvojQI="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uol4kovrSPQ=",
+													"_parent": {
+														"$ref": "AAAAAAF4uol4bYvqY/I="
+													},
+													"font": "Arial;13;0",
+													"left": 269,
+													"top": 122,
+													"width": 181,
+													"height": 26,
+													"text": "Tính kết quả của mô hình và hiệu quả của mỗi đặc trưng",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 259,
+											"top": 112,
+											"width": 201,
+											"height": 49,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uol4kovrSPQ="
+											}
+										},
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uooB4Iv0b2k=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uooB34vysKc="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uooB4Iv1K44=",
+													"_parent": {
+														"$ref": "AAAAAAF4uooB4Iv0b2k="
+													},
+													"font": "Arial;13;0",
+													"left": 293,
+													"top": 210,
+													"width": 133,
+													"height": 26,
+													"text": "Loại bỏ đặc trưng có hiệu quả thấp nhất",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 283,
+											"top": 200,
+											"width": 153,
+											"height": 46,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uooB4Iv1K44="
+											}
+										},
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uoox7Yv9pws=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uoox7Yv7lt4="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uoox7Yv+WAc=",
+													"_parent": {
+														"$ref": "AAAAAAF4uoox7Yv9pws="
+													},
+													"font": "Arial;13;0",
+													"left": 285,
+													"top": 290,
+													"width": 149,
+													"height": 26,
+													"text": "Huấn luyện mô hình với tập đặc trưng mới",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 275,
+											"top": 280,
+											"width": 169,
+											"height": 46,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uoox7Yv+WAc="
+											}
+										},
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uoqyjIwJYP0=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uoqyjIwHCTI="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uoqyjIwKgO4=",
+													"_parent": {
+														"$ref": "AAAAAAF4uoqyjIwJYP0="
+													},
+													"font": "Arial;13;0",
+													"left": 265,
+													"top": 370,
+													"width": 189,
+													"height": 39,
+													"text": "Tính kết quả mô hình và hiệu quả của các đặc trưng trong tập các đặc trưng mới",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 255,
+											"top": 360,
+											"width": 209,
+											"height": 59,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uoqyjIwKgO4="
+											}
+										},
+										{
+											"_type": "FCDecisionView",
+											"_id": "AAAAAAF4uoxPs4w0DZI=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uoxPs4w1Ot4=",
+													"_parent": {
+														"$ref": "AAAAAAF4uoxPs4w0DZI="
+													},
+													"font": "Arial;13;0",
+													"left": 307.25,
+													"top": 462.25,
+													"width": 104.5,
+													"height": 28.5,
+													"text": "Tập đặc trưng còn lại khác rỗng",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 255,
+											"top": 448,
+											"width": 209,
+											"height": 57,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uoxPs4w1Ot4="
+											}
+										},
+										{
+											"_type": "FCTerminatorView",
+											"_id": "AAAAAAF4uoygX4w97wg=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uoygX4w7TeI="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAF4uoygYIw+Aj4=",
+													"_parent": {
+														"$ref": "AAAAAAF4uoygX4w97wg="
+													},
+													"font": "Arial;13;0",
+													"left": 274,
+													"top": 546,
+													"width": 173,
+													"height": 26,
+													"text": "Đưa ra bộ đặc trưng cho kết quả tối ưu nhất với mô hình",
+													"wordWrap": true
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 264,
+											"top": 536,
+											"width": 193,
+											"height": 46,
+											"nameLabel": {
+												"$ref": "AAAAAAF4uoygYIw+Aj4="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo1pYYxRvgc=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo1pYYxPz3Q="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo1pYYxSezg=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo1pYYxRvgc="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo1pYYxPz3Q="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 373,
+													"top": 89,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 15,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo1pYYxRvgc="
+													},
+													"edgePosition": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uol4bYvqY/I="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uojMJIvcEnA="
+											},
+											"lineStyle": 2,
+											"points": "359:80;359:112",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo1pYYxSezg="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo2vM4xjlp8=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo2vM4xh7Qw="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo2vM4xkvc4=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo2vM4xjlp8="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo2vM4xh7Qw="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 373,
+													"top": 173,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 15,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo2vM4xjlp8="
+													},
+													"edgePosition": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uooB4Iv0b2k="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uol4bYvqY/I="
+											},
+											"lineStyle": 2,
+											"points": "359:160;359:200",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo2vM4xkvc4="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo2534xsLAo=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo2534xqhIU="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo2534xt97w=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo2534xsLAo="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo2534xqhIU="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 373,
+													"top": 255,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 15,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo2534xsLAo="
+													},
+													"edgePosition": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uoox7Yv9pws="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uooB4Iv0b2k="
+											},
+											"lineStyle": 2,
+											"points": "359:245;359:280",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo2534xt97w="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo3G14x1wPU=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo3G14xzaBI="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo3G14x2SQk=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo3G14x1wPU="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo3G14xzaBI="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 373,
+													"top": 335,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 15,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo3G14x1wPU="
+													},
+													"edgePosition": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uoqyjIwJYP0="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uoox7Yv9pws="
+											},
+											"lineStyle": 2,
+											"points": "359:325;359:360",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo3G14x2SQk="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo3SYIx+Z9E=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo3SX4x82j4="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo3SYIx/3Tw=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo3SYIx+Z9E="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo3SX4x82j4="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 373,
+													"top": 426,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 15,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo3SYIx+Z9E="
+													},
+													"edgePosition": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uoxPs4w0DZI="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uoqyjIwJYP0="
+											},
+											"lineStyle": 2,
+											"points": "359:418;359:448",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo3SYIx/3Tw="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo3ez4yHTyI=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo3ez4yF/mE="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo3e0IyITEg=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo3ez4yHTyI="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo3ez4yF/mE="
+													},
+													"font": "Arial;13;0",
+													"left": 368,
+													"top": 513,
+													"width": 31.7890625,
+													"height": 13,
+													"alpha": 1.6124382635624697,
+													"distance": 24.020824298928627,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo3ez4yHTyI="
+													},
+													"edgePosition": 1,
+													"text": "Sai"
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uoygX4w97wg="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uoxPs4w0DZI="
+											},
+											"lineStyle": 2,
+											"points": "359:504;359:536",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo3e0IyITEg="
+											}
+										},
+										{
+											"_type": "FCFlowView",
+											"_id": "AAAAAAF4uo4/6YyVthU=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoisxYvWqko="
+											},
+											"model": {
+												"$ref": "AAAAAAF4uo4/6YyTz9c="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAF4uo4/6YyWSgc=",
+													"_parent": {
+														"$ref": "AAAAAAF4uo4/6YyVthU="
+													},
+													"model": {
+														"$ref": "AAAAAAF4uo4/6YyTz9c="
+													},
+													"font": "Arial;13;0",
+													"left": 216,
+													"top": 459,
+													"width": 31.078125,
+													"height": 13,
+													"alpha": -2.942510589764093,
+													"distance": 116.29703349613007,
+													"hostEdge": {
+														"$ref": "AAAAAAF4uo4/6YyVthU="
+													},
+													"edgePosition": 1,
+													"text": "Đúng"
+												}
+											],
+											"font": "Arial;13;0",
+											"head": {
+												"$ref": "AAAAAAF4uooB4Iv0b2k="
+											},
+											"tail": {
+												"$ref": "AAAAAAF4uoxPs4w0DZI="
+											},
+											"lineStyle": 2,
+											"points": "255:480;208:480;208:224;283:224",
+											"nameLabel": {
+												"$ref": "AAAAAAF4uo4/6YyWSgc="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uojMJIvaCcY=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Huấn luyện mô hình với toàn bộ các đặc trưng",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo1pYYxPz3Q=",
+											"_parent": {
+												"$ref": "AAAAAAF4uojMJIvaCcY="
+											},
+											"source": {
+												"$ref": "AAAAAAF4uojMJIvaCcY="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uol4bIvojQI="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uol4bIvojQI=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Tính kết quả của mô hình và hiệu quả của mỗi đặc trưng",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo2vM4xh7Qw=",
+											"_parent": {
+												"$ref": "AAAAAAF4uol4bIvojQI="
+											},
+											"source": {
+												"$ref": "AAAAAAF4uol4bIvojQI="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uooB34vysKc="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uooB34vysKc=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Loại bỏ đặc trưng có hiệu quả thấp nhất",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo2534xqhIU=",
+											"_parent": {
+												"$ref": "AAAAAAF4uooB34vysKc="
+											},
+											"source": {
+												"$ref": "AAAAAAF4uooB34vysKc="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uoox7Yv7lt4="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uoox7Yv7lt4=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Huấn luyện mô hình với tập đặc trưng mới",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo3G14xzaBI=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoox7Yv7lt4="
+											},
+											"source": {
+												"$ref": "AAAAAAF4uoox7Yv7lt4="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uoqyjIwHCTI="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uoqyjIwHCTI=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Tính kết quả mô hình và hiệu quả của các đặc trưng trong tập các đặc trưng mới",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo3SX4x82j4=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoqyjIwHCTI="
+											},
+											"source": {
+												"$ref": "AAAAAAF4uoqyjIwHCTI="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCDecision",
+									"_id": "AAAAAAF4uoxPsowy/Z4=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Tập đặc trưng còn lại khác rỗng",
+									"ownedElements": [
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo3ez4yF/mE=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											},
+											"name": "Sai",
+											"source": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uoygX4w7TeI="
+											}
+										},
+										{
+											"_type": "FCFlow",
+											"_id": "AAAAAAF4uo4/6YyTz9c=",
+											"_parent": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											},
+											"name": "Đúng",
+											"source": {
+												"$ref": "AAAAAAF4uoxPsowy/Z4="
+											},
+											"target": {
+												"$ref": "AAAAAAF4uooB34vysKc="
+											}
+										}
+									]
+								},
+								{
+									"_type": "FCTerminator",
+									"_id": "AAAAAAF4uoygX4w7TeI=",
+									"_parent": {
+										"$ref": "AAAAAAF4uoisxYvVY6k="
+									},
+									"name": "Đưa ra bộ đặc trưng cho kết quả tối ưu nhất với mô hình"
+								}
+							]
+						}
+					],
 					"ownedViews": [
 						{
 							"_type": "FCTerminatorView",
