@@ -46,6 +46,8 @@ struct Trie {
 		if (tok != "") ret.push_back(tok);
 	}
 
+//Direction
+vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
 
 // Binary search
 	while (l < r-1) {
@@ -63,6 +65,12 @@ struct classcomp {
 
 set<int, classcomp> maxheap;
 set<int> minheap;
+
+static bool fncomp (pair<double,int> lhs, pair<double,int> rhs) {
+	return lhs.first > rhs.first;
+}
+bool(*fn_pt)(pair<double,int>, pair<double,int>) = fncomp;
+multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt);
 	
 // Building from 2 side
 	vector<int> s(n,-1);
