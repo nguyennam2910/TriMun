@@ -1,11 +1,17 @@
 // Implement Trie
 struct Trie {
-        bool check;
+	bool check; // Custom for each problem, Set<int> for max index or int for value, ...
         Trie* next[26];
         Trie(): check(false) {
-            for (int i=0; i<26; ++i) next[i] = NULL;
+        	for (int i=0; i<26; ++i) next[i] = NULL;
         }
-    };
+	// Using recursive to avoid memleak
+	~Trie {
+		for (int i=0; i<26; ++i) {
+			if(next[i]) delete next[i];
+		}
+	}
+};
     
     void insert(Trie* a, string word) {
         Trie* t = a;
@@ -52,10 +58,17 @@ vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
 // Binary search
 	while (l < r-1) {
 		int m = (r+l)/2;
-		if (check(a,k,m)) r = m;
+		if (check(a, k, m)) r = m;
 		else l = m;
 	}
 	return r;
+	//r can't be 0 so use instead
+        while (l < r) {
+            int m = (r+l)/2;
+            if (check(map, k, m)) r = m;
+            else l = m+1;
+	}
+	return l;
 
 // Min, maxheap
 struct classcomp {
@@ -66,11 +79,11 @@ struct classcomp {
 set<int, classcomp> maxheap;
 set<int> minheap;
 
-static bool fncomp (pair<double,int> lhs, pair<double,int> rhs) {
+static bool fncomp (pair<double,int>& lhs, pair<double,int>& rhs) {
 	return lhs.first > rhs.first;
 }
-bool(*fn_pt)(pair<double,int>, pair<double,int>) = fncomp;
-multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt);
+bool(*fn_pt)(pair<double,int> &, pair<double,int> &) = fncomp;
+multiset<pair<double,int>, bool(*)(pair<double,int> &, pair<double,int> &)> pq(fn_pt);
 	
 // Building from 2 side
 	vector<int> s(n,-1);
@@ -163,11 +176,11 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 			deg[x] += 1;
 			deg[y] += 1;
 	 
-			xset = find(x);
-			yset = find(y);
+			int xset = find(x);
+			int yset = find(y);
 			if (xset == yset)   return;
 	 
-			if (rank[xset]>rank[yset]) {
+			if (rank[xset] > rank[yset]) {
 				par[yset] = xset;
 			} else {
 				par[xset] = yset;
@@ -185,6 +198,46 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 			fill(deg.begin(), deg.end(), 0);
 		}
 	};
+
+	// To check how many component in disjoint-set
+	UnionFind u(n);
+        for (auto i:arr) {
+            u.merge(i[0], i[1]);
+        }
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+            if (u.par[i] == i) ans++; // ans is number of component;
+        return ans;
+
+// Matrix prefix sum
+        int m = mat.size(), n = mat[0].size();
+        vector<vector<int>> rangeSum(m+1, vector<int>(n+1, 0));
+        
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
+                rangeSum[i+1][j+1] = rangeSum[i+1][j] + rangeSum[i][j+1] - rangeSum[i][j] + mat[i][j];
+            }
+        }
+	// Sum rectangle bottom, up, right, left. https://leetcode.com/problems/matrix-block-sum/discuss/477041/Java-Prefix-sum-with-Picture-explain-Clean-code-O(m*n)
+	sum = rangeSum[bottom][right] - rangeSum[up][right] - rangeSum[bottom][left] + rangeSum[up][left];
+	
+	// Solution 2
+	 for (int r = 1; r <= m; r++) {
+            for (int c = 1; c <= n; c++) {
+                sum[r][c] = mat[r - 1][c - 1] + sum[r - 1][c] + sum[r][c - 1] - sum[r - 1][c - 1];
+            }
+        }
+	// Sum
+	for (int r = 0; r < m; r++) {
+            for (int c = 0; c < n; c++) {
+                int r1 = Math.max(0, r - K), c1 = Math.max(0, c - K);
+                int r2 = Math.min(m - 1, r + K), c2 = Math.min(n - 1, c + K);
+                r1++; c1++; r2++; c2++; // Since `sum` start with 1 so we need to increase r1, c1, r2, c2 by 1
+                ans[r][c] = sum[r2][c2] - sum[r2][c1-1] - sum[r1-1][c2] + sum[r1-1][c1-1];
+            }
+        }
+// Abs
+	|A| + |B| = max(|A+B|, |A-B|)
 
 //Greedy take all max value
 	int getMax(std::multiset<int>& sets)
