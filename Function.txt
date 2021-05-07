@@ -52,8 +52,8 @@ struct Trie {
 		if (tok != "") ret.push_back(tok);
 	}
 
-//Direction
-vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
+// Direction
+	vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
 
 // Binary search
 	while (l < r-1) {
@@ -78,6 +78,7 @@ struct classcomp {
 
 set<int, classcomp> maxheap;
 set<int> minheap;
+priority_queue <int, vector<int>, greater<int>> pq;
 
 static bool fncomp (pair<double,int>& lhs, pair<double,int>& rhs) {
 	return lhs.first > rhs.first;
@@ -91,11 +92,11 @@ multiset<pair<double,int>, bool(*)(pair<double,int> &, pair<double,int> &)> pq(f
 		cout<<"1";
 		return;
 	}
-	if ( (c+a-c+b-c > n) || ((a==b) && (a==c) && (a == 1))) {
+	if ( (c+a-c+b-c > n) || ((a == b) && (a == c) && (a == 1)) ) {
 		cout<<"IMPOSSIBLE";
 		return;
 	}
-	int l = a-c, r= b-c;
+	int l = a-c, r = b-c;
 	int temp = n-l;
 	for (int i=0; i<l; ++i) s[i] = temp++;
 	temp = n-r;
