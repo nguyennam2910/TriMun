@@ -80,11 +80,11 @@ set<int, classcomp> maxheap;
 set<int> minheap;
 priority_queue <int, vector<int>, greater<int>> pq;
 
-static bool fncomp (pair<double,int>& lhs, pair<double,int>& rhs) {
+static bool fncomp (pair<double, int> lhs, pair<double, int> rhs) {
 	return lhs.first > rhs.first;
 }
-bool(*fn_pt)(pair<double,int> &, pair<double,int> &) = fncomp;
-multiset<pair<double,int>, bool(*)(pair<double,int> &, pair<double,int> &)> pq(fn_pt);
+bool(*fn_pt)(pair<double,int>, pair<double,int>) = fncomp;
+multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt);
 	
 // Building from 2 side
 	vector<int> s(n,-1);
