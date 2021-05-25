@@ -297,3 +297,50 @@ void dfs(int index, int count) {
 	}
 	return;
 }
+
+// KMP table  https://leetcode.com/problems/longest-happy-prefix/
+	vector<int> prefixFunction(string s) {
+    		vector<int> p(s.size());
+    		int j = 0;
+    		for (int i = 1; i < s.size(); i++) {
+        		while (j > 0 && s[j] != s[i]) j = p[j-1];
+
+        		if (s[j] == s[i]) j++;
+        		p[i] = j;
+    		}   
+    		return p;
+	}
+
+// String hashing https://leetcode.com/problems/distinct-echo-substrings/discuss/779620/C%2B%2B-String-Hashing-Solution-with-Explanation\
+	//for (i : 1 .. n)  https://vnoi.info/wiki/algo/string/hash.md
+      		//hashP = (hashP * base + P[i] - 'a' + 1) mod MOD
+	int n = text.size();
+
+	int p = 31; // for all letter p = 53
+	int m = 1e9 + 9;
+        vector<ll> p_pow(n);
+        p_pow[0] = 1;
+	
+        for(int i=1; i<n; i++) p_pow[i] = (p_pow[i-1]*p) % m;
+
+        vector<ll> hash(n+1,0);
+        for(int i=0; i<n; i++)
+        {
+		hash[i+1]= (hash[i] + (text[i]-'a'+1) * p_pow[i]) % m; //dont forget the 1 here, or else "aa" and "aaa" will map to the same value
+        }
+
+        unordered_map<ll, ll> mp;
+
+        for(int l=2; l <= n; l+=2) //l is length of string
+        {
+            for(int i=0; i+l <= n; i++)
+            {
+                ll curr1 = (hash[i+l/2] + m - hash[i]) % m; // +m for ensuring have remainder
+                curr1 = (curr1 * p_pow[n-i-1]) % m; 
+                ll curr2 = (hash[i+l] + m - hash[i+l/2]) % m;
+                curr2 = (curr2 * p_pow[n-i-1-l/2]) % m;
+
+                if (curr1 == curr2) um[curr1]++;
+            }
+        }
+        return mp.size();
