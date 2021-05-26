@@ -173,13 +173,13 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 	 
 		int find(int x) { return (par[x] == x) ? x : par[x] = find(par[x]); }
 	 
-		void merge(int x, int y) {
+		bool merge(int x, int y) {
 			deg[x] += 1;
 			deg[y] += 1;
 	 
 			int xset = find(x);
 			int yset = find(y);
-			if (xset == yset)   return;
+			if (xset == yset)   return false;
 	 
 			if (rank[xset] > rank[yset]) {
 				par[yset] = xset;
@@ -189,6 +189,8 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 					rank[yset] += 1;
 				}
 			}
+
+			return true;
 		}
 	 
 		void reset() {
