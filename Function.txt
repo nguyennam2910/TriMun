@@ -43,13 +43,18 @@ struct Trie {
         return true;
     }
 
+// Funtion get max, min ,sum in array a or iota to make incresing array
+	auto ma = *max_element(a.begin(), a.end());
+	auto mi = *min_element(a.begin(), a.end());
+	auto sum = accumulate(a.begin(), a.end(), 0);
+	iota(a.begin(), a.end(), 10) // 10, 11, 12, 13, ...
 
 // Split string
 	vector<string> ret;
-	stringstream ss(p);
-	string tok;
-	while(getline(ss, tok, '*')) {
-		if (tok != "") ret.push_back(tok);
+	stringstream ss(p);   //p is original string
+	string temp;
+	while(getline(ss, temp, '*')) {   //'*' is delimitation character
+		if (tok != "") ret.push_back(temp);
 	}
 
 // Direction
@@ -57,23 +62,23 @@ struct Trie {
 
 // Binary search
 	while (l < r-1) {
-		int m = (r+l)/2;
-		if (check(a, k, m)) r = m;
-		else l = m;
+		int mid = (r+l)/2;
+		if (check(a, k, mid)) r = mid;
+		else l = mid;
 	}
 	return r;
 	//r can't be 0 so use instead
         while (l < r) {
-            int m = (r+l)/2;
-            if (check(map, k, m)) r = m;
-            else l = m+1;
+            int mid = (r+l)/2;
+            if (check(a, k, mid)) r = mid;
+            else l = mid+1;
 	}
 	return l;
 
 // Min, maxheap
 struct classcomp {
   bool operator() (const int& lhs, const int& rhs) const
-  {return lhs>rhs;}
+  {return lhs > rhs;}
 };
 
 set<int, classcomp> maxheap;
@@ -346,3 +351,11 @@ void dfs(int index, int count) {
             }
         }
         return mp.size();
+
+// GCD
+	int gcd (int a, int b) {
+        	if(b == 0){
+        	    return a;
+        	}
+        	return gcd(b, a % b);
+  	}
