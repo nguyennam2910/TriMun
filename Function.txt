@@ -86,7 +86,7 @@ static bool fncomp (pair<double, int> lhs, pair<double, int> rhs) {
 bool(*fn_pt)(pair<double,int>, pair<double,int>) = fncomp;
 multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt);
 	
-// Building from 2 side
+// Building from 2 side https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff47/00000000003bef73
 	vector<int> s(n,-1);
 	if (a==1 && b==1 && c==1 && n==1) {
 		cout<<"1";
@@ -120,7 +120,7 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 	}
 
 	
-// Toys
+// Toys  https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff47/00000000003bede9
 	bool fncomp (pair<ll,ll> lhs, pair<ll,ll> rhs) {return lhs.second > rhs.second;}
 	void Solve(vector<vector<ll>>& a) {
 		ll sum = 0, need = 0;
@@ -242,7 +242,7 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 // Abs
 	|A| + |B| = max(|A+B|, |A-B|)
 
-//Greedy take all max value
+// Greedy take all max value
 	int getMax(std::multiset<int>& sets)
 	{
 		int days = 0, sum = 0;
