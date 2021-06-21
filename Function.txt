@@ -194,7 +194,6 @@ multiset<pair<double,int>, bool(*)(pair<double,int>, pair<double,int>)> pq(fn_pt
 					rank[yset] += 1;
 				}
 			}
-
 			return true;
 		}
 	 
@@ -358,4 +357,22 @@ void dfs(int index, int count) {
         	    return a;
         	}
         	return gcd(b, a % b);
-  	}
+	}
+
+// Using Pascal's triangle to caculate combinations, reusable
+	dp[0][0] = 1;
+        for(int i=1; i<=len; i++) {
+            for(int j=0; j<=i; j++) {
+                if(j == 0 || j == i)
+                    dp[i][j] = 1;
+                else {
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+                }
+            }
+        }
+	// Use 1 time
+	long comb(int n, int r) {
+		long ans = 1;
+		for (int i = 1, j = n - r + 1; i <= r; ++i, ++j) ans = ans * j / i;
+		return ans;
+	}
