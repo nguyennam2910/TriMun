@@ -57,8 +57,14 @@ struct Trie {
 		if (tok != "") ret.push_back(temp);
 	}
 
-// Direction
+// Direction Move
 	vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
+
+	const int fx[]={+0,+0,+1,-1,-1,+1,-1,+1};   // Kings Move
+	const int fy[]={-1,+1,+0,+0,+1,+1,-1,-1};  // Kings Move
+
+	const int fx[]={-2, -2, -1, -1,  1,  1,  2,  2};  // Knights Move
+	const int fy[]={-1,  1, -2,  2, -2,  2, -1,  1}; // Knights Move
 
 // Binary search
 	while (l < r-1) {
@@ -77,8 +83,8 @@ struct Trie {
 
 // Min, maxheap
 struct classcomp {
-  bool operator() (const int& lhs, const int& rhs) const
-  {return lhs > rhs;}
+	bool operator() (const int& lhs, const int& rhs) const
+	{return lhs > rhs;}
 };
 
 set<int, classcomp> maxheap;
