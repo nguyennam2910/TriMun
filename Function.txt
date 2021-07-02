@@ -382,3 +382,59 @@ void dfs(int index, int count) {
 		for (int i = 1, j = n - r + 1; i <= r; ++i, ++j) ans = ans * j / i;
 		return ans;
 	}
+
+// Bitmaksing run from 00000 -> 11111
+	for (int i=0; i < (1<<n); ++i) {
+            for (int j=0; j<n; ++j) {
+                if (i & (1 << j)) {	//check if j bit is 1
+
+                }
+            }
+	}
+
+// Binary Indexed Tree https://leetcode.com/problems/range-sum-query-mutable/
+class NumArray {
+public:
+    NumArray(vector<int>& nums) {
+        ori = vector<int> (nums.size(), 0);
+        bit = vector<int> (nums.size()+1, 0);
+        n = nums.size();
+        for (int i=0; i<nums.size(); ++i) {
+            update(i, nums[i]);
+        }
+    }
+
+    void update(int u, int v) {
+        int minus = v - ori[u];
+        ori[u] = v;
+        updateTree(u, minus);
+    }
+
+    void updateTree(int u, int v) {
+        int idx = u+1;
+        while (idx <= n) {
+            bit[idx] += v;
+            idx += (idx & (-idx));
+        }
+    }
+
+    int getSum(int p) {
+        int idx = p+1, ans = 0;
+        while (idx > 0) {
+            ans += bit[idx];
+            idx -= (idx & (-idx));
+        }
+        return ans;
+    }
+
+    int sumRange(int left, int right) {
+        int r = getSum(right);
+        int l = 0;
+        if (left != 0) l = getSum(left-1);
+        return r-l;
+    }
+
+    vector<int> bit;
+    vector<int> ori;
+    int n;
+};
