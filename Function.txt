@@ -393,7 +393,7 @@ void dfs(int index, int count) {
 	}
 
 // Binary Indexed Tree https://leetcode.com/problems/range-sum-query-mutable/
-class NumArray {
+class NumArray {  //https://vnoi.info/wiki/algo/data-structures/fenwick.md
 public:
     NumArray(vector<int>& nums) {
         ori = vector<int> (nums.size(), 0);
@@ -403,21 +403,16 @@ public:
             update(i, nums[i]);
         }
     }
-
+    
     void update(int u, int v) {
-        int minus = v - ori[u];
-        ori[u] = v;
-        updateTree(u, minus);
-    }
-
-    void updateTree(int u, int v) {
         int idx = u+1;
         while (idx <= n) {
-            bit[idx] += v;
+            bit[idx] += v-ori[u];
             idx += (idx & (-idx));
         }
+        ori[u] = v;
     }
-
+    
     int getSum(int p) {
         int idx = p+1, ans = 0;
         while (idx > 0) {
@@ -426,14 +421,14 @@ public:
         }
         return ans;
     }
-
+    
     int sumRange(int left, int right) {
         int r = getSum(right);
         int l = 0;
         if (left != 0) l = getSum(left-1);
         return r-l;
     }
-
+    
     vector<int> bit;
     vector<int> ori;
     int n;
