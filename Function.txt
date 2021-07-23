@@ -1,3 +1,7 @@
+std::ios::sync_with_stdio(false);
+std::cin.tie(0);
+std::cout.tie(0);
+
 // Implement Trie
 struct Trie {
 	bool check; // Custom for each problem, Set<int> for max index or int for value, ...
@@ -73,7 +77,7 @@ struct Trie {
 		else l = mid;
 	}
 	return r;
-	//r can't be 0 so use instead
+	// r can't be 0 so use instead, r = A.size() (limit+1)
         while (l < r) {
             int mid = (r+l)/2;
             if (check(a, k, mid)) r = mid;
@@ -392,44 +396,63 @@ void dfs(int index, int count) {
             }
 	}
 
-// Binary Indexed Tree https://leetcode.com/problems/range-sum-query-mutable/
-class NumArray {  //https://vnoi.info/wiki/algo/data-structures/fenwick.md
-public:
-    NumArray(vector<int>& nums) {
-        ori = vector<int> (nums.size(), 0);
-        bit = vector<int> (nums.size()+1, 0);
-        n = nums.size();
-        for (int i=0; i<nums.size(); ++i) {
-            update(i, nums[i]);
-        }
+// Binary Indexed Tree, index start from 1 (don't use 0) https://leetcode.com/problems/range-sum-query-mutable/
+// https://vnoi.info/wiki/algo/data-structures/fenwick.md
+// https://codeforces.com/contest/1311/problem/F
+
+void update(vector<ll>& bit, int u, int v) { //update bit[u] += v
+    int idx = u;
+    while (idx < bit.size()) {
+        bit[idx] += v;
+        idx += (idx & (-idx));
     }
-    
-    void update(int u, int v) {
-        int idx = u+1;
-        while (idx <= n) {
-            bit[idx] += v-ori[u];
-            idx += (idx & (-idx));
-        }
-        ori[u] = v;
+}
+
+ll getSum(vector<ll>& bit, int p) {
+    ll idx = p, ans = 0;
+    while (idx > 0) {
+        ans += bit[idx];
+        idx -= (idx & (-idx));
     }
-    
-    int getSum(int p) {
-        int idx = p+1, ans = 0;
-        while (idx > 0) {
-            ans += bit[idx];
-            idx -= (idx & (-idx));
-        }
-        return ans;
-    }
-    
-    int sumRange(int left, int right) {
-        int r = getSum(right);
-        int l = 0;
-        if (left != 0) l = getSum(left-1);
-        return r-l;
-    }
-    
-    vector<int> bit;
-    vector<int> ori;
-    int n;
-};
+    return ans;
+}
+
+ll sumRange(vector<ll>& bit, int left, int right) {
+    ll r = getSum(bit, right);
+    ll l = 0;
+    if (left != 0) l = getSum(bit, left-1);
+    return r-l;
+}
+
+int main()
+{
+	int n; cin>>n;
+	vector<ll> x(n);
+	vector<ll> v(n);
+	for (int i=0; i<n; ++i) cin>>x[i];
+	for (int i=0; i<n; ++i) cin>>v[i];
+	vector<ll> bit1(n+1, 0);
+	vector<ll> bit2(n+1, 0);
+	unordered_map<int, int> m;
+	vector<ll> temp(v);
+	sort(temp.begin(), temp.end());
+	m[temp[0]] = 1;
+	for (int i=1; i<n; ++i) {
+		if (temp[i] != temp[i-1]) m[temp[i]] = m[temp[i-1]]+1;
+	}
+	vector<vector<ll>> p;
+	for (int i=0; i<n; ++i) {
+		p.push_back({x[i], v[i]});
+	}
+	sort(p.begin(), p.end());
+	ll ret = 0;
+	for (int i=0; i<n; ++i) {
+		ll cnt = getSum(bit1, m[p[i][1]]);
+		ll sum = getSum(bit2, m[p[i][1]]);
+		ret += p[i][0]*cnt - sum;
+		update(bit1, m[p[i][1]], 1);
+		update(bit2, m[p[i][1]], p[i][0]);
+	}
+	cout<<ret;
+	return 0;
+}
