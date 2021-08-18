@@ -456,3 +456,25 @@ int main()
 	cout<<ret;
 	return 0;
 }
+
+// Merge sort template to solve pair {i, j}
+// https://leetcode.com/problems/count-of-smaller-numbers-after-self/discuss/138154/The-C%2B%2B-merge-sort-template-for-pairs-'i'-'j'-problem
+    int sort_count(vector<long>& a, int l, int r, int lower, int upper) {
+        if (l+1 >= r) return 0;
+        int m = (l+r)/2;
+        int count = sort_count(a, l, m, lower, upper) + sort_count(a, m, r, lower, upper);
+        for (int i=l, j1=m, j2=m; i<m; ++i) {
+            while (j1 < r && a[j1] - a[i] < lower) j1++;
+            while (j2 < r && a[j2] - a[i] <= upper) j2++;
+            count += j2-j1;
+        }
+        inplace_merge(a.begin()+l, a.begin()+m, a.begin()+r);
+        return count;
+    }
+    int countRangeSum(vector<int>& nums, int lower, int upper) {
+        vector<long> sum(nums.size()+1, 0);
+        for (int i=1; i<sum.size(); ++i) {
+            sum[i] += sum[i-1] + nums[i-1];
+        }
+        return sort_count(sum, 0, sum.size(), lower, upper);
+    }
