@@ -58,7 +58,7 @@ struct Trie {
 	stringstream ss(p);   //p is original string
 	string temp;
 	while(getline(ss, temp, '*')) {   //'*' is delimitation character
-		if (tok != "") ret.push_back(temp);
+		if (temp != "") ret.push_back(temp);
 	}
 
 // Direction Move
@@ -395,6 +395,13 @@ void dfs(int index, int count) {
                 }
             }
 	}
+// Submask iteration https://cp-algorithms.com/algebra/all-submasks.html
+	for (int i=1; i < (1<<n);++i) {
+		for (int j=i; j; j=(j-1)&i) {
+			//j is a submask of bitmask i
+		}
+	}
+
 
 // Binary Indexed Tree, index start from 1 (don't use 0) https://leetcode.com/problems/range-sum-query-mutable/
 // https://vnoi.info/wiki/algo/data-structures/fenwick.md
