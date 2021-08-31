@@ -485,3 +485,21 @@ int main()
         }
         return sort_count(sum, 0, sum.size(), lower, upper);
     }
+
+// Modulo Inverse
+// https://leetcode.com/problems/count-ways-to-build-rooms-in-an-ant-colony/discuss/1299661/DFS-oror-Combinatorics-oror-Modulo-Inverse-oror-DP-oror-Solution-Explained-oror-Easy-Code-oror-Hard-Logic
+// When need co perform (A/B)*MOD
+	int modInverse(int a, int m) { //(a^-1) % m
+        	return power(a, m - 2, m);
+    	}
+    
+    	int power(int x, int y, int m) {
+        	if (y == 0)
+            	return 1;
+        	int p = power(x, y / 2, m) % m;
+        	p = (int)((p * (long)p) % m);
+        	if (y % 2 == 0)
+        	    return p;
+        	else
+				return (int)((x * (long)p) % m);
+	}
