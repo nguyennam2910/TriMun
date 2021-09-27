@@ -62,7 +62,7 @@ struct Trie {
 	}
 
 // Direction Move
-	vector<vector<int>> dir{{-1,0},{1,0},{0,-1},{0,1}};
+	vector<vector<int>> dir{{-1,0}, {1,0}, {0,-1}, {0,1}};
 
 	const int fx[]={+0,+0,+1,-1,-1,+1,-1,+1};   // Kings Move
 	const int fy[]={-1,+1,+0,+0,+1,+1,-1,-1};  // Kings Move
@@ -503,3 +503,87 @@ int main()
         	else
 				return (int)((x * (long)p) % m);
 	}
+
+// Strongly Connected Components
+struct SCC {
+  vector<vector<int> > edges, redges;
+  vector<bool> used;
+  vector<int> order, component;
+  int n;
+
+  void init(int _n) {
+    n = _n;
+    edges = vector<vector<int> >(n);
+    redges = vector<vector<int> >(n);
+    order.clear();
+    component.clear();
+  }
+
+  void addEdge(int u, int v) {
+    edges[u].push_back(v);
+    redges[v].push_back(u);
+  }
+
+  void dfs1(int v) {
+    used[v] = true;
+    for (int i = 0; i < edges[v].size(); i++) {
+      if (!used[edges[v][i]]) {
+        dfs1(edges[v][i]);
+      }
+    }
+    order.push_back(v);
+  }
+
+  void dfs2(int v) {
+    used[v] = true;
+    component.push_back(v);
+    for (int i = 0; i < redges[v].size(); i++) {
+      if (!used[redges[v][i]]) {
+        dfs2(redges[v][i]);
+      }
+    }
+  }
+
+  vector<vector<int> > run() {
+    vector<vector<int> > components;
+    used.assign(n, false);
+    for (int i = 0; i < n; i++) {
+      if (!used[i]) {
+        dfs1(i);
+      }
+    }
+
+    used.assign(n, false);
+    for (int i = 0; i < n; i++) {
+      int v = order[n - 1 - i];
+      if (!used[v]) {
+        dfs2(v);
+        components.push_back(component);
+        component.clear();
+      }
+    }
+    // Each components[i] is a SCC members's
+    return components;
+  }
+};
+int main()
+{
+	SCC g4;
+	g4.init(11);
+	g4.addEdge(0,1);g4.addEdge(0,3);
+	g4.addEdge(1,2);g4.addEdge(1,4);
+	g4.addEdge(2,0);g4.addEdge(2,6);
+	g4.addEdge(3,2);
+	g4.addEdge(4,5);g4.addEdge(4,6);
+	g4.addEdge(5,6);g4.addEdge(5,7);g4.addEdge(5,8);g4.addEdge(5,9);
+	g4.addEdge(6,4);
+	g4.addEdge(7,9);
+	g4.addEdge(8,9);
+	g4.addEdge(9,8);
+	auto t = g4.run();
+	for (auto r:t) {
+		for (auto z:r) cout<<z;
+		cout<<endl;
+	}
+	return 0;
+}
